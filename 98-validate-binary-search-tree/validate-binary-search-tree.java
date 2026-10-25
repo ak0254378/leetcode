@@ -1,0 +1,16 @@
+class Solution {
+    private long previous = Long.MIN_VALUE;
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        if (!isValidBST(root.left)) {
+            return false;
+        }
+        if (root.val <= previous) {
+            return false;
+        }
+        previous = root.val;
+        return isValidBST(root.right);
+    }
+}
